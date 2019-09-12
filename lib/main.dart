@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           body: Column(
             children: <Widget>[
               Text(
-                questions[0],
+                questions[questionIndex],
               ),
               RaisedButton(
                 child: Text('Answer 1'),

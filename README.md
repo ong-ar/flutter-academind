@@ -62,3 +62,26 @@ void main() {
 
 - private
   https://dart.dev/guides/language/effective-dart/design#libraries
+
+- null
+
+```dart
+void main() {
+    var userName = 'Max';
+
+    //...
+
+    useName = null; // (o)
+    useName = 1; // (x)
+}
+
+void main() {
+    var userName;
+
+    //...
+
+    if(userName != null) {
+        //...
+    }
+}
+```

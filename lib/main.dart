@@ -16,43 +16,55 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int _questionIndex = 0;
 
+  static const questions = [
+    {
+      'questionText': 'What\'s your favorite color?',
+      'answers': ['Black', 'Red', 'Green', 'White'],
+    },
+    {
+      'questionText': 'What\'s your favorite animal?',
+      'answers': ['Rabbit', 'Snake', 'Elephant', 'Lion'],
+    },
+    {
+      'questionText': 'What\'s your favorite instructor?',
+      'answers': ['1', '2', '3', '4'],
+    },
+  ];
+
   void _answerQuestion() {
     setState(() {
       _questionIndex++;
     });
+    if (_questionIndex < questions.length - 1) {
+      print('more content');
+    } else {
+      print('no more content');
+    }
     print(_questionIndex);
   }
 
   @override
   Widget build(BuildContext context) {
-    List<String> questions = [
-      'What\'s your favorite color?',
-      'What\'s your favorite animal?'
-    ];
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
             title: Text('My First App'),
           ),
-          body: Column(
-            children: <Widget>[
-              Question(
-                questionText: questions[_questionIndex],
-              ),
-              Answer(
-                buttonText: 'Answer 1',
-                clickedHandler: _answerQuestion,
-              ),
-              Answer(
-                buttonText: 'Answer 2',
-                clickedHandler: null,
-              ),
-              Answer(
-                buttonText: 'Answer 3',
-                clickedHandler: () => print('text'),
-              )
-            ],
-          )),
+          body: _questionIndex < questions.length
+              ? Column(
+                  children: <Widget>[
+                    Question(
+                      questionText: questions[_questionIndex]['questionText'],
+                    ),
+                    ...(questions[_questionIndex]['answers'] as List<String>)
+                        .map((answer) => Answer(
+                              buttonText: answer,
+                              clickedHandler: _answerQuestion,
+                            ))
+                        .toList(),
+                  ],
+                )
+              : Center(child: Text('no more Content'))),
     );
   }
 }

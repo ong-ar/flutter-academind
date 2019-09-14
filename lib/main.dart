@@ -12,13 +12,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int questionIndex = 0;
+  int _questionIndex = 0;
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() {
-      questionIndex++;
+      _questionIndex++;
     });
-    print(questionIndex);
+    print(_questionIndex);
   }
 
   @override
@@ -35,11 +35,11 @@ class _MyAppState extends State<MyApp> {
           body: Column(
             children: <Widget>[
               Text(
-                questions[questionIndex],
+                questions[_questionIndex],
               ),
               RaisedButton(
                 child: Text('Answer 1'),
-                onPressed: answerQuestion,
+                onPressed: _answerQuestion,
               ),
               RaisedButton(
                 child: Text('Answer 2'),

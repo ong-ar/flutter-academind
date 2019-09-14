@@ -59,3 +59,6 @@ void main() {
     var p3 = Person3({name: 'Max', age: 30});
 }
 ```
+
+- private
+  https://dart.dev/guides/language/effective-dart/design#libraries

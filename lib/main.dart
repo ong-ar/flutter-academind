@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_academind/question.dart';
+import "./answer.dart";
 
 // void main() {
 //   runApp(MyApp());
@@ -34,20 +36,20 @@ class _MyAppState extends State<MyApp> {
           ),
           body: Column(
             children: <Widget>[
-              Text(
-                questions[_questionIndex],
+              Question(
+                questionText: questions[_questionIndex],
               ),
-              RaisedButton(
-                child: Text('Answer 1'),
-                onPressed: _answerQuestion,
+              Answer(
+                buttonText: 'Answer 1',
+                clickedHandler: _answerQuestion,
               ),
-              RaisedButton(
-                child: Text('Answer 2'),
-                onPressed: null,
+              Answer(
+                buttonText: 'Answer 2',
+                clickedHandler: null,
               ),
-              RaisedButton(
-                child: Text('Answer 3'),
-                onPressed: () => print('text'),
+              Answer(
+                buttonText: 'Answer 3',
+                clickedHandler: () => print('text'),
               )
             ],
           )),
